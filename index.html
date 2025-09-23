@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./syle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <div class="player-controls">
+            <h3>Select Starting Player:</h3>
+            <div class="player">
+                <button class="playerX">Player X</button>
+                <button class="playerO">Player O</button>
+            </div>
+        </div>
+        <div class="current-player">
+            Current Player: <span id="currentPlayerDisplay">X</span>
+        </div>
+        <div class="score">
+            <div class="score-item">
+                <span>Player X: </span>
+                <span class="scoreX">0</span>
+            </div>
+            <div class="score-item">
+                <span>Player O: </span>
+                <span class="scoreO">0</span>
+            </div>
+        </div>
+        <div class="gameBoard">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <button class="resetGame">Reset Game</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
