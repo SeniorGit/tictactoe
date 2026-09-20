@@ -2,46 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#eee8d8">
+    <meta name="description" content="Tic Tac Toe for two players, set as a two-colour press proof.">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="./syle.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23eee8d8'/%3E%3Cpath d='M7 7l18 18M25 7L7 25' stroke='%23191713' stroke-width='5'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Tic Tac Toe</h1>
-        <div class="player-controls">
-            <h3>Select Starting Player:</h3>
-            <div class="player">
-                <button class="playerX">Player X</button>
-                <button class="playerO">Player O</button>
+    <main class="sheet">
+
+        <header class="masthead">
+            <h1 class="masthead__title"><span>Tic</span><span>Tac</span><span>Toe</span></h1>
+            <p class="masthead__note">Two players, one sheet. Three in a line takes the round.</p>
+        </header>
+
+        <div class="game">
+
+            <div class="panel status">
+                <p class="label" id="status-kicker">Turn</p>
+                <div role="status" aria-atomic="true">
+                    <p class="status__line" id="status-line"><span class="stamp" data-shape="X"><span class="visually-hidden">X</span></span>to move.</p>
+                    <p class="status__detail" id="status-detail">Move 1 of 9</p>
+                </div>
             </div>
-        </div>
-        <div class="current-player">
-            Current Player: <span id="currentPlayerDisplay">X</span>
-        </div>
-        <div class="score">
-            <div class="score-item">
-                <span>Player X: </span>
-                <span class="scoreX">0</span>
+
+            <div class="plate">
+                <div class="board" id="board" role="group" aria-label="Game board, three by three">
+                    <button class="cell" type="button" tabindex="0" aria-label="Row 1, column 1, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 1, column 2, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 1, column 3, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 2, column 1, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 2, column 2, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 2, column 3, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 3, column 1, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 3, column 2, empty"></button>
+                    <button class="cell" type="button" tabindex="-1" aria-label="Row 3, column 3, empty"></button>
+                </div>
             </div>
-            <div class="score-item">
-                <span>Player O: </span>
-                <span class="scoreO">0</span>
+
+            <section class="panel ledger">
+                <h2 class="visually-hidden">Score</h2>
+                <dl class="ledger__table">
+                    <div class="ledger__side">
+                        <dt><span class="stamp" data-shape="X"></span><span class="visually-hidden">X</span></dt>
+                        <dd id="score-x" data-value="0"><span class="ledger__pad" aria-hidden="true">0</span>0</dd>
+                    </div>
+                    <div class="ledger__meta">
+                        <dt class="label">Round</dt>
+                        <dd id="round" data-value="1"><span class="ledger__pad" aria-hidden="true">0</span>1</dd>
+                        <dt class="label">Drawn</dt>
+                        <dd id="draws" data-value="0"><span class="ledger__pad" aria-hidden="true">0</span>0</dd>
+                    </div>
+                    <div class="ledger__side ledger__side--o">
+                        <dt><span class="stamp" data-shape="O"></span><span class="visually-hidden">O</span></dt>
+                        <dd id="score-o" data-value="0"><span class="ledger__pad" aria-hidden="true">0</span>0</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <div class="panel starter">
+                <span class="label" id="starter-label">First mark</span>
+                <div class="starter__options" role="radiogroup" aria-labelledby="starter-label">
+                    <input class="visually-hidden starter__input" type="radio" name="starter" id="starter-x" value="X" checked>
+                    <label class="starter__label" for="starter-x"><span class="stamp" data-shape="X"></span><span class="visually-hidden">X goes first</span></label>
+                    <input class="visually-hidden starter__input" type="radio" name="starter" id="starter-o" value="O">
+                    <label class="starter__label" for="starter-o"><span class="stamp" data-shape="O"></span><span class="visually-hidden">O goes first</span></label>
+                </div>
             </div>
+
+            <div class="panel actions">
+                <button class="btn" type="button" id="new-round">New round</button>
+                <button class="btn btn--quiet" type="button" id="reset-score">Reset score</button>
+            </div>
+
         </div>
-        <div class="gameBoard">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
-        <button class="resetGame">Reset Game</button>
-    </div>
-    <script src="main.js"></script>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
